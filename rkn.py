@@ -1,8 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
-"""
+
+
 x = 0
+"""
 def cl ():
     global x
     x += 1
@@ -10,20 +12,24 @@ def cl ():
 """
 #окно
 root = Tk()
-root.title("test на вич")
+root.title("test")
 root.geometry("800x800")
+root.configure(bg="grey")
 
 
 #Кнопки
-style = ttk.Style()
-style.configure("Big.TButton", font=('Arial', 14))
-btn1 = ttk.Button(text="Click", width=20, style="Big.TButton" )
-btn1.place(x=10, y= 30)
+style = ttk.Style(root)
+style.configure("TButton", font=('Arial', 14), height=100, )
+btn1 = ttk.Button(text="Пополнить", width=15, style="TButton", )
+btn1.place(x=400, y=200)
+btn2 = ttk.Button(text="Вычесть", width=15, style="TButton")
+btn2.place(x=200, y=200)
 
 
 #Текст
-label = ttk.Label(text="Привет")
-label.pack()
+style.configure("Big.TLabel" ,font=("Courier", 44), )
+label = ttk.Label(text=x, style="Big.TLabel", background="grey" )
+label.place(x=375, y=100)
 
 
 root.mainloop()
