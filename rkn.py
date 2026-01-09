@@ -17,18 +17,34 @@ root.configure(bg="grey")
 
 
 def neww():  # создание нового окна для пополнения
+     
+    global entry1
+    global rootp
     rootp = Tk()
     rootp.geometry("400x400")
     rootp.configure(bg='grey')
-    btnp = ttk.Button(rootp, text="Пополнить", width=30)
+    btnp = ttk.Button(rootp, text="Пополнить", width=30, command=cl1)
     btnp.place(x=100, y=350)
     lab1 = ttk.Label(rootp, text="Введите сумму", background="grey", font=('Arial', 20))
     lab1.place(x=110, y=50)
+    entry1 = ttk.Entry(rootp)
+    entry1.place(x=120, y=175, width=175, height=50)
+    
 
+def cl1():
+    global rootp
+    global x
+    global entry1
+    plus1 = entry1.get()
+    label["text"] += x + int(plus1)
+    x = 0
+    rootp.destroy()
+    
 
 def newww():  # окно для вычитания
     global x
     global entry2
+    global rootm
     rootm = Tk()
     rootm.geometry("400x400")
     rootm.configure(bg="grey")
@@ -41,8 +57,13 @@ def newww():  # окно для вычитания
 
 def cl2():
         global x
+        global rootm
         plus2 = entry2.get()
-        label['text'] = x - int(plus2)
+        label['text'] += x - int(plus2)
+        x = 0
+        rootm.destroy()
+        
+
 
 
 # Кнопки
