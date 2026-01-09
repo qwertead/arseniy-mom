@@ -1,8 +1,13 @@
+
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
 
 x = 0
+history = []
+
+
+
 """
 def cl ():
     global x
@@ -37,9 +42,11 @@ def cl1():
     global entry1
     plus1 = entry1.get()
     label["text"] += x + int(plus1)
+    history.append(['+', plus1])
     x = 0
     rootp.destroy()
     
+
 
 def newww():  # окно для вычитания
     global x
@@ -60,11 +67,21 @@ def cl2():
         global rootm
         plus2 = entry2.get()
         label['text'] += x - int(plus2)
+        history.append(['-', plus2])
         x = 0
         rootm.destroy()
         
-
-
+def trans():
+    roott = Tk()
+    roott.geometry('400x400')
+    roott.configure(bg='grey')
+    labt = ttk.Label(roott ,text='История KFC', background='grey', font=('Arial', 20))
+    labt.pack()
+    listbox = Listbox(roott, width=40, height=20)
+    listbox.pack()
+    for i in history:
+         listbox.insert(0, i)
+    
 
 # Кнопки
 style = ttk.Style(root)
@@ -73,6 +90,8 @@ btn1 = ttk.Button(text="Пополнить", width=15, style="TButton", command=
 btn1.place(x=400, y=200)
 btn2 = ttk.Button(text="Вычесть", width=15, style="TButton", command=newww)
 btn2.place(x=200, y=200)
+btn3 = ttk.Button(text='История KFC', command=trans)
+btn3.place(x=50, y=50)
 
 # Баланс
 style.configure("Big.TLabel", font=("Courier", 44), )
