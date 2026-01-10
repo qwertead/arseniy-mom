@@ -1,8 +1,7 @@
-
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
-
+import time
 x = 0
 history = []
 
@@ -41,10 +40,26 @@ def cl1():
     global x
     global entry1
     plus1 = entry1.get()
-    label["text"] += x + int(plus1)
-    history.append(['+', plus1])
-    x = 0
-    rootp.destroy()
+    try:
+        
+        label["text"] += x + int(plus1)
+        history.append(['+', plus1])
+        x = 0
+        rootp.destroy()
+    except ValueError:
+        global rootv
+        rootv = Tk()
+        rootv.geometry('200x200')
+        rootv.configure(bg='grey')
+        labv = ttk.Label(rootv, background='grey', text="Введите цифры", font=('Arial', 20))
+        labv.pack(anchor='center')
+        btno = ttk.Button(rootv ,text='OK', width=10, command=d)
+        btno.place(x=55, y=90)
+def d():
+    global rootv
+    rootv.destroy()     
+
+    
     
 
 
@@ -66,10 +81,25 @@ def cl2():
         global x
         global rootm
         plus2 = entry2.get()
-        label['text'] += x - int(plus2)
-        history.append(['-', plus2])
-        x = 0
-        rootm.destroy()
+        try:
+            label['text'] += x - int(plus2)
+            history.append(['-', plus2])
+            x = 0
+            rootm.destroy()
+            
+        except ValueError:
+            global rootv
+            rootv = Tk()
+            rootv.geometry('200x200')
+            rootv.configure(bg='grey')
+            labv = ttk.Label(rootv, background='grey', text="Введите цифры", font=('Arial', 20))
+            labv.pack(anchor='center')
+            btno = ttk.Button(rootv ,text='OK', width=10, command=d)
+            btno.place(x=55, y=90)
+def d():
+    global rootv
+    rootv.destroy() 
+        
         
 def trans():
     roott = Tk()
