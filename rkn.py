@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from Yakrivoruki import current_time
 from tkinter import font
 import time
 x = 0
@@ -129,3 +130,4 @@ label = ttk.Label(text=x, style="Big.TLabel", background="grey")
 label.place(x=375, y=100)
 
 root.mainloop()
+
