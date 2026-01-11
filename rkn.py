@@ -21,6 +21,8 @@ root.geometry("800x800")
 root.configure(bg="grey")
 
 
+
+
 def neww():  # создание нового окна для пополнения
      
     global entry1
@@ -45,6 +47,9 @@ def cl1():
         
         label["text"] += x + int(plus1)
         history.append(['+', plus1])
+        with open('data', 'a', encoding='utf-8') as f:
+                f.write('+')
+                f.write(f'{plus1}\n')
         x = 0
         rootp.destroy()
     except ValueError:
@@ -85,6 +90,11 @@ def cl2():
         try:
             label['text'] += x - int(plus2)
             history.append(['-', plus2])
+            
+            with open('data', 'a', encoding='utf-8') as f:
+                f.write('-')
+                f.write(f'{plus2}\n')
+
             x = 0
             rootm.destroy()
             
@@ -112,6 +122,13 @@ def trans():
     listbox.pack()
     for i in history:
          listbox.insert(0, i)
+
+
+def data():
+     global listbox
+     with open('data', 'r', encoding='utf-8') as f:
+         for line in f:
+              listbox.insert(line)
     
 
 # Кнопки
@@ -130,4 +147,3 @@ label = ttk.Label(text=x, style="Big.TLabel", background="grey")
 label.place(x=375, y=100)
 
 root.mainloop()
-
